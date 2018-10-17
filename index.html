@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/new_file.css" />
+	</head>
+
+	<body>
+
+		<div class="mui-content">
+			<div class="calc_sum">
+				<h1 id="screen"></h1>
+			</div>
+			<div class="calc_header">
+				<h1 id="result">0</h1>
+			</div>
+			<div class="calc_contant">
+				<ul class="first">
+					<li id="clean">C</li>
+					<li id="chu">÷</li>
+					<li id="cheng">×</li>
+					<li id="back">←</li>
+				</ul>
+				<ul>
+					<li class="num">7</li>
+					<li class="num">8</li>
+					<li class="num">9</li>
+					<li id="jian">-</li>
+				</ul>
+				<ul>
+					<li class="num">4</li>
+					<li class="num">5</li>
+					<li class="num">6</li>
+					<li id="jia">+</li>
+				</ul>
+				<ul>
+					<li class="num">1</li>
+					<li class="num">2</li>
+					<li class="num">3</li>
+					<li id="percent">%</li>
+				</ul>
+				<ul>
+					<li class="dot" id="dot">.</li>
+					<li class="num">0</li>
+					<li class="equal" id="deng">=</li>
+				</ul>
+			</div>
+		</div>
+
+		<script src="js/jQuery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript" charset="utf-8">
+			mui.init();
+		</script>
+		<script type="text/javascript">
+			var temp = "";
+			var result = "";
+			var ischick = false;
+
+			$(".num").click(function() {
+				temp = temp + $(this).html();
+				$("#screen").html(temp);
+				ischick = true;
+			});
+
+			$("#clean").click(function() {
+				temp = "";
+				result = "";
+				$("#screen").html(temp);
+				$("#result").html(result);
+			});
+
+			$("#jia").click(function() {
+				if(ischick) {
+					temp = temp + $(this).html();
+					$("#screen").html(temp);
+					ischick = false;
+				}
+			});
+
+			$("#jian").click(function() {
+				if(ischick) {
+					temp = temp + $(this).html();
+					$("#screen").html(temp);
+					ischick = false;
+				}
+			});
+
+			$("#cheng").click(function() {
+				if(ischick) {
+					temp = temp + "*";
+					$("#screen").html(temp);
+					ischick = false;
+				}
+			});
+			$("#chu").click(function() {
+				if(ischick) {
+					temp = temp + "/";
+					$("#screen").html(temp);
+					ischick = false;
+				}
+			});
+			$("#percent").click(function() {
+				if(ischick) {
+					temp = temp + $(this).html();
+					$("#screen").html(temp);
+					ischick = false;
+				}
+			});
+			$("#dot").click(function() {
+				if(ischick) {
+					temp = temp + $(this).html();
+					$("#screen").html(temp);
+					ischick = false;
+				}
+			});
+
+			$("#deng").click(function() {
+				if(ischick) {
+					result = eval(temp);
+					$("#result").html(result);
+					temp = result;
+				}
+			});
+		</script>
+	</body>
+
+</html>
